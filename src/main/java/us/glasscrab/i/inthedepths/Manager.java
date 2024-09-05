@@ -30,6 +30,10 @@ public class Manager {
         upgradeableItems.add(Material.NETHERITE_HOE);
         upgradeableItems.add(Material.NETHERITE_SWORD);
 
+        // Miscellaneous:
+        upgradeableItems.add(Material.FISHING_ROD);
+        upgradeableItems.add(Material.MACE);
+
         return upgradeableItems.contains(material);
     }
 
@@ -39,9 +43,11 @@ public class Manager {
         upgradeableEnchantmentList.add(Enchantment.SHARPNESS);
         upgradeableEnchantmentList.add(Enchantment.SMITE);
         upgradeableEnchantmentList.add(Enchantment.BANE_OF_ARTHROPODS);
+        upgradeableEnchantmentList.add(Enchantment.WIND_BURST);
 
         // Tools
         upgradeableEnchantmentList.add(Enchantment.EFFICIENCY);
+        upgradeableEnchantmentList.add(Enchantment.LURE);
 
         // Armour
         upgradeableEnchantmentList.add(Enchantment.PROTECTION);
@@ -72,7 +78,7 @@ public class Manager {
         ItemMeta meta = item.getItemMeta();
 
         meta.setDisplayName(ChatColor.AQUA + "Charged Opal");
-        lore.add(ChatColor.GRAY + "A shimmering jewel that can be inset into netherite items.");
+        lore.add(ChatColor.GRAY + "A shimmering jewel that can be inset into powerful items.");
         meta.setLore(lore);
 
         lore.clear();
