@@ -33,38 +33,29 @@ public class Manager {
         return upgradeableItems.contains(material);
     }
 
-    public Set<Enchantment> getUpgradeableToolEnchantmentList(){
-        Set<Enchantment> upgradeableToolEnchantmentList = new HashSet<>();
-        upgradeableToolEnchantmentList.add(Enchantment.SHARPNESS);
-        upgradeableToolEnchantmentList.add(Enchantment.SMITE);
-        upgradeableToolEnchantmentList.add(Enchantment.BANE_OF_ARTHROPODS);
-        upgradeableToolEnchantmentList.add(Enchantment.EFFICIENCY);
-        return upgradeableToolEnchantmentList;
+    public Set<Enchantment> getUpgradeableEnchantmentList(){
+        Set<Enchantment> upgradeableEnchantmentList = new HashSet<>();
+        // Weapons
+        upgradeableEnchantmentList.add(Enchantment.SHARPNESS);
+        upgradeableEnchantmentList.add(Enchantment.SMITE);
+        upgradeableEnchantmentList.add(Enchantment.BANE_OF_ARTHROPODS);
+
+        // Tools
+        upgradeableEnchantmentList.add(Enchantment.EFFICIENCY);
+
+        // Armour
+        upgradeableEnchantmentList.add(Enchantment.PROTECTION);
+        upgradeableEnchantmentList.add(Enchantment.BLAST_PROTECTION);
+        upgradeableEnchantmentList.add(Enchantment.FIRE_PROTECTION);
+        upgradeableEnchantmentList.add(Enchantment.PROJECTILE_PROTECTION);
+
+        return upgradeableEnchantmentList;
     }
 
-    public boolean containsUpgradeableToolEnchant (Map<Enchantment,Integer> enchantments){
-        Set<Enchantment> upgradeableToolEnchantmentList = getUpgradeableToolEnchantmentList();
+    public boolean containsUpgradeableEnchant (Map<Enchantment,Integer> enchantments){
+        Set<Enchantment> upgradeableToolEnchantmentList = getUpgradeableEnchantmentList();
         for(Enchantment e : enchantments.keySet()){
             if(upgradeableToolEnchantmentList.contains(e)){
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public Set<Enchantment> getUpgradeableArmorEnchantmentList(){
-        Set<Enchantment> upgradeableArmorEnchantmentList = new HashSet<>();
-        upgradeableArmorEnchantmentList.add(Enchantment.PROTECTION);
-        upgradeableArmorEnchantmentList.add(Enchantment.BLAST_PROTECTION);
-        upgradeableArmorEnchantmentList.add(Enchantment.FIRE_PROTECTION);
-        upgradeableArmorEnchantmentList.add(Enchantment.PROJECTILE_PROTECTION);
-        return upgradeableArmorEnchantmentList;
-    }
-
-    public boolean containsUpgradeableArmorEnchant(Map<Enchantment,Integer> enchantments){
-        Set<Enchantment> upgradeableArmorEnchantmentList = getUpgradeableArmorEnchantmentList();
-        for(Enchantment e : enchantments.keySet()){
-            if(upgradeableArmorEnchantmentList.contains(e)){
                 return true;
             }
         }

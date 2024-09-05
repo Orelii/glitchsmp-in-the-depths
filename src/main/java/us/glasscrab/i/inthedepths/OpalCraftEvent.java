@@ -37,37 +37,22 @@ public class OpalCraftEvent implements Listener {
         ItemMeta meta = netheriteItem.getItemMeta();
         ItemStack opal = e.getMainHandItem();
 
-        if(manager.containsUpgradeableToolEnchant(e.getOffHandItem().getEnchantments())){
+        if(manager.containsUpgradeableEnchant(e.getOffHandItem().getEnchantments())){
             for(Enchantment ench : e.getOffHandItem().getEnchantments().keySet()){
-                if(manager.getUpgradeableToolEnchantmentList().contains(ench)){
-                    if(meta.getEnchantLevel(ench) == 6){
+                if(manager.getUpgradeableEnchantmentList().contains(ench)){
+                    if(meta.getEnchantLevel(ench) == ench.getMaxLevel() + 1){
                         String message = ChatColor.RED + "This item already has an opal inset!";
                         e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacy(message));
                         e.setCancelled(true);
                         return;
                     }
                     e.getMainHandItem().setAmount(e.getMainHandItem().getAmount() - 1);
-                    meta.addEnchant(ench, 6, true);
+                    meta.addEnchant(ench, ench.getMaxLevel() + 1, true);
                 }
             }
         }
 
-        else if(manager.containsUpgradeableArmorEnchant(e.getOffHandItem().getEnchantments())){
-            for(Enchantment ench : e.getOffHandItem().getEnchantments().keySet()){
-                if(manager.getUpgradeableArmorEnchantmentList().contains(ench)){
-                    if(meta.getEnchantLevel(ench) == 5){
-                        String message = ChatColor.RED + "This item already has an opal inset!";
-                        e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacy(message));
-                        e.setCancelled(true);
-                        return;
-                    }
-                    e.getMainHandItem().setAmount(e.getMainHandItem().getAmount() - 1);
-                    meta.addEnchant(ench, 5, true);
-                }
-            }
-        }
-
-        else if(e.getOffHandItem().getEnchantments().size() == 0 || !manager.containsUpgradeableToolEnchant(e.getOffHandItem().getEnchantments()) || !manager.containsUpgradeableArmorEnchant(e.getOffHandItem().getEnchantments())){
+        else if(e.getOffHandItem().getEnchantments().size() == 0 || !manager.containsUpgradeableEnchant(e.getOffHandItem().getEnchantments())){
             String message = ChatColor.RED + "This item is inert, it cannot accept an opal!";
             e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacy(message));
             e.setCancelled(true);
