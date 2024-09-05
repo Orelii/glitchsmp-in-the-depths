@@ -1,7 +1,7 @@
 name: Inthedepths
 version: '${project.version}'
 main: us.glasscrab.i.inthedepths.Inthedepths
-api-version: 1.19
+api-version: 1.21
 authors: [ glasscrab ]
 description: Special items rarely spawning in certain locations of the world.
 website: i.glasscrab.us
