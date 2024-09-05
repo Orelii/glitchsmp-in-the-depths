@@ -35,6 +35,7 @@ public class Manager {
         upgradeableItems.add(Material.MACE);
         upgradeableItems.add(Material.BOW);
         upgradeableItems.add(Material.CROSSBOW);
+        upgradeableItems.add(Material.TRIDENT);
 
         return upgradeableItems.contains(material);
     }
@@ -48,6 +49,7 @@ public class Manager {
         upgradeableEnchantmentList.add(Enchantment.WIND_BURST);
         upgradeableEnchantmentList.add(Enchantment.POWER);
         upgradeableEnchantmentList.add(Enchantment.QUICK_CHARGE);
+        upgradeableEnchantmentList.add(Enchantment.IMPALING);
 
         // Tools
         upgradeableEnchantmentList.add(Enchantment.EFFICIENCY);
