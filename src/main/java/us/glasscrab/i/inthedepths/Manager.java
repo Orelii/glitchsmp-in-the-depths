@@ -33,6 +33,8 @@ public class Manager {
         // Miscellaneous:
         upgradeableItems.add(Material.FISHING_ROD);
         upgradeableItems.add(Material.MACE);
+        upgradeableItems.add(Material.BOW);
+        upgradeableItems.add(Material.CROSSBOW);
 
         return upgradeableItems.contains(material);
     }
@@ -44,6 +46,8 @@ public class Manager {
         upgradeableEnchantmentList.add(Enchantment.SMITE);
         upgradeableEnchantmentList.add(Enchantment.BANE_OF_ARTHROPODS);
         upgradeableEnchantmentList.add(Enchantment.WIND_BURST);
+        upgradeableEnchantmentList.add(Enchantment.POWER);
+        upgradeableEnchantmentList.add(Enchantment.QUICK_CHARGE);
 
         // Tools
         upgradeableEnchantmentList.add(Enchantment.EFFICIENCY);
