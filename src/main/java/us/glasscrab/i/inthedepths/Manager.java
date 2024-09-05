@@ -35,10 +35,10 @@ public class Manager {
 
     public Set<Enchantment> getUpgradeableToolEnchantmentList(){
         Set<Enchantment> upgradeableToolEnchantmentList = new HashSet<>();
-        upgradeableToolEnchantmentList.add(Enchantment.DAMAGE_ALL);
-        upgradeableToolEnchantmentList.add(Enchantment.DAMAGE_UNDEAD);
-        upgradeableToolEnchantmentList.add(Enchantment.DAMAGE_ARTHROPODS);
-        upgradeableToolEnchantmentList.add(Enchantment.DIG_SPEED);
+        upgradeableToolEnchantmentList.add(Enchantment.SHARPNESS);
+        upgradeableToolEnchantmentList.add(Enchantment.SMITE);
+        upgradeableToolEnchantmentList.add(Enchantment.BANE_OF_ARTHROPODS);
+        upgradeableToolEnchantmentList.add(Enchantment.EFFICIENCY);
         return upgradeableToolEnchantmentList;
     }
 
@@ -54,10 +54,10 @@ public class Manager {
 
     public Set<Enchantment> getUpgradeableArmorEnchantmentList(){
         Set<Enchantment> upgradeableArmorEnchantmentList = new HashSet<>();
-        upgradeableArmorEnchantmentList.add(Enchantment.PROTECTION_ENVIRONMENTAL);
-        upgradeableArmorEnchantmentList.add(Enchantment.PROTECTION_EXPLOSIONS);
-        upgradeableArmorEnchantmentList.add(Enchantment.PROTECTION_FIRE);
-        upgradeableArmorEnchantmentList.add(Enchantment.PROTECTION_PROJECTILE);
+        upgradeableArmorEnchantmentList.add(Enchantment.PROTECTION);
+        upgradeableArmorEnchantmentList.add(Enchantment.BLAST_PROTECTION);
+        upgradeableArmorEnchantmentList.add(Enchantment.FIRE_PROTECTION);
+        upgradeableArmorEnchantmentList.add(Enchantment.PROJECTILE_PROTECTION);
         return upgradeableArmorEnchantmentList;
     }
 

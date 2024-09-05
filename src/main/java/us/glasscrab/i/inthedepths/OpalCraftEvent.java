@@ -42,7 +42,7 @@ public class OpalCraftEvent implements Listener {
                 if(manager.getUpgradeableToolEnchantmentList().contains(ench)){
                     if(meta.getEnchantLevel(ench) == 6){
                         String message = ChatColor.RED + "This item already has an opal inset!";
-                        e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(message));
+                        e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacy(message));
                         e.setCancelled(true);
                         return;
                     }
@@ -57,7 +57,7 @@ public class OpalCraftEvent implements Listener {
                 if(manager.getUpgradeableArmorEnchantmentList().contains(ench)){
                     if(meta.getEnchantLevel(ench) == 5){
                         String message = ChatColor.RED + "This item already has an opal inset!";
-                        e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(message));
+                        e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacy(message));
                         e.setCancelled(true);
                         return;
                     }
@@ -69,7 +69,7 @@ public class OpalCraftEvent implements Listener {
 
         else if(e.getOffHandItem().getEnchantments().size() == 0 || !manager.containsUpgradeableToolEnchant(e.getOffHandItem().getEnchantments()) || !manager.containsUpgradeableArmorEnchant(e.getOffHandItem().getEnchantments())){
             String message = ChatColor.RED + "This item is inert, it cannot accept an opal!";
-            e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(message));
+            e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacy(message));
             e.setCancelled(true);
             return;
         }
@@ -89,7 +89,7 @@ public class OpalCraftEvent implements Listener {
         e.setMainHandItem(netheriteItem);
         e.setOffHandItem(opal);
 
-        e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacyText(ChatColor.AQUA + "Opal inset into tool!"));
+        e.getPlayer().spigot().sendMessage(ChatMessageType.ACTION_BAR, TextComponent.fromLegacy(ChatColor.AQUA + "Opal inset into tool!"));
 
         //VV this only works if you're playing on 1.19.4 VV
         e.getPlayer().playSound(e.getPlayer(), Sound.BLOCK_AMETHYST_BLOCK_FALL, SoundCategory.PLAYERS, 1,1);
