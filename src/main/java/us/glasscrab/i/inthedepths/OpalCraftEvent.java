@@ -1,9 +1,7 @@
 package us.glasscrab.i.inthedepths;
 
-import net.kyori.adventure.audience.Audience;
 import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.Sound;
 import org.bukkit.SoundCategory;
@@ -34,7 +32,6 @@ public class OpalCraftEvent implements Listener {
         if(!e.getMainHandItem().getItemMeta().hasCustomModelData()) return;
         if(e.getMainHandItem().getItemMeta().getCustomModelData() != 1) return;
 
-        Audience audience = Inthedepths.INSTANCE.audiences.player(e.getPlayer());
         MiniMessage miniMessage = MiniMessage.miniMessage();
 
         ItemStack netheriteItem = e.getOffHandItem();
@@ -45,8 +42,7 @@ public class OpalCraftEvent implements Listener {
             for(Enchantment ench : e.getOffHandItem().getEnchantments().keySet()){
                 if(manager.getUpgradeableEnchantmentList().contains(ench)){
                     if(meta.getEnchantLevel(ench) == ench.getMaxLevel() + 1){
-                        Component message = miniMessage.deserialize("<red>This item already has an opal inset!</red>");
-                        audience.sendActionBar(message);
+                        e.getPlayer().sendActionBar(miniMessage.deserialize("<red>This item already has an opal inset!</red>"));
                         e.setCancelled(true);
                         return;
                     }
@@ -57,29 +53,27 @@ public class OpalCraftEvent implements Listener {
         }
 
         else if(e.getOffHandItem().getEnchantments().size() == 0 || !manager.containsUpgradeableEnchant(e.getOffHandItem().getEnchantments())){
-            Component message = miniMessage.deserialize("<red>This item is inert, it cannot accept an opal!");
-            audience.sendActionBar(message);
+            e.getPlayer().sendActionBar(miniMessage.deserialize("<red>This item is inert, it cannot accept an opal!"));
             e.setCancelled(true);
             return;
         }
 
-        List<String> itemLore;
-        if(meta.getLore() == null){
+        List<Component> itemLore;
+        if(meta.lore() == null){
             itemLore = new ArrayList<>();
         }
         else{
-            itemLore = meta.getLore();
+            itemLore = meta.lore();
         }
 
-        itemLore.add(ChatColor.AQUA + "♢" + ChatColor.GRAY + "Charged Opal" + ChatColor.AQUA + "♢");
-        meta.setLore(itemLore);
+        itemLore.add(miniMessage.deserialize("<aqua>♢</aqua><gray>Charged Opal</gray><aqua>♢</aqua>"));
+        meta.lore(itemLore);
         netheriteItem.setItemMeta(meta);
 
         e.setMainHandItem(netheriteItem);
         e.setOffHandItem(opal);
 
-        Component message = miniMessage.deserialize("<aqua>Opal inset into tool!</aqua>");
-        audience.sendActionBar(message);
+        e.getPlayer().sendActionBar(miniMessage.deserialize("<aqua>Opal inset into tool!</aqua>"));
 
         //VV this only works if you're playing on 1.19.4 VV
         e.getPlayer().playSound(e.getPlayer(), Sound.BLOCK_AMETHYST_BLOCK_FALL, SoundCategory.PLAYERS, 1,1);

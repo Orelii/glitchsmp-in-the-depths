@@ -1,11 +1,13 @@
 package us.glasscrab.i.inthedepths;
 
-import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Item;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.meta.ItemMeta;
+
+import net.kyori.adventure.text.Component;
+import net.kyori.adventure.text.minimessage.MiniMessage;
 
 import java.util.*;
 
@@ -67,13 +69,14 @@ public class Manager {
     }
 
     public ItemStack makeOpal() {
-        List<String> lore = new ArrayList<>();
+        List<Component> lore = new ArrayList<>();
         ItemStack item = new ItemStack(Material.ECHO_SHARD, 1);
         ItemMeta meta = item.getItemMeta();
+        var miniMessage = MiniMessage.miniMessage();
 
-        meta.setDisplayName(ChatColor.AQUA + "Charged Opal");
-        lore.add(ChatColor.GRAY + "A shimmering jewel that can be inset into netherite items.");
-        meta.setLore(lore);
+        meta.displayName(miniMessage.deserialize("<aqua>Charged Opal</aqua>"));
+        lore.add(miniMessage.deserialize("<gray>A shimmering jewel that can be inset into netherite items.</gray>"));
+        meta.lore(lore);
 
         lore.clear();
 
